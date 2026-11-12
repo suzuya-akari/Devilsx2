@@ -12,9 +12,12 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: 8.7
+      - run: |
+          mkdir -p src/main/java
+          mv MainActivity.kt EmulatorLauncher.kt src/main/java/
+          mv AndroidManifest.xml src/main/
       - run: gradle assembleDebug
-      - run: cp ../dmc3-out/outputs/apk/debug/app-debug.apk .
       - uses: actions/upload-artifact@v4
         with:
           name: dmc3-launcher-apk
-          path: app-debug.apk
+          path: build/outputs/apk/debug/app-debug.apk
