@@ -17,8 +17,7 @@ jobs:
           mv MainActivity.kt EmulatorLauncher.kt src/main/java/
           mv AndroidManifest.xml src/main/
       - run: gradle assembleDebug
-      - run: find . -name "*.apk"
       - uses: actions/upload-artifact@v4
         with:
           name: dmc3-launcher-apk
-                    path: build/outputs/apk/debug/DMC3Launcher-debug.apk
+          path: build/outputs/apk/debug/DMC3Launcher-debug.apk
